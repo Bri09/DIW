@@ -3,8 +3,23 @@ body {
   background-color: rgba(251, 223, 200, 255);
 }
 
+div.bigBox {
+  padding-left: 8em;
+  padding-right: 8em;
+}
+
 .box {
   display: flex;
+}
+
+.emptyRow{
+  flex: 1;
+  border: 1px solid rgba(251, 223, 200, 255);
+  padding-top: 30px;
+  height: 70px;
+  width: 85px;
+  margin-right: 2px;
+  margin-bottom: 2px;
 }
 
 .rowH {
@@ -12,13 +27,21 @@ body {
   background-color: rgba(173, 216, 230, 255);
   padding-top: 1em;
   border-bottom: 3px solid mediumblue;
+  margin-right: 2px;
+  margin-bottom: 2px;
+  width: 85px;
 }
 
 .rowB {
   flex: 1;
   border: 1px solid black;
   font-size: 30px;
+  padding-top: 30px;
   font-family: Arial;
+  height: 70px;
+  width: 85px;
+  margin-right: 2px;
+  margin-bottom: 2px;
 }
 
 div.fe {
