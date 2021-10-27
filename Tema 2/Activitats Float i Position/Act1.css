@@ -1,0 +1,15 @@
+div{
+    background-color: rgb(187, 184, 184);
+    clear: both;
+    height: 50px;
+}
+.rightFloat{
+    float: right;
+    margin-top: 15px;
+    margin-right: 5px;
+}
+.leftFloat{
+    float: left;
+    margin-top: 15px;
+    margin-left: 5px;
+}
