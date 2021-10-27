@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad1</title>
+</head>
+
+<body>
+    <!--Párrafo-->
+    <p>
+        <f1 style="font-family: 'Courier New', Courier, monospace;">Fuente 1</f1>
+        <f2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Fuente 2</f2>
+        <f3 style="font-family: 'Times New Roman', Times, serif;">Fuente 3</f3>
+    </p>
+
+    <br>
+
+    <!--Links-->
+    <a href="https://www.minijuegos.com/?gclid=EAIaIQobChMI0NuBidTH8wIVqwsGAB0GQwlqEAAYASAAEgJz5PD_BwE">minijuegos</a>
+    <br>
+    <a href="https://www.juegos.com/juegos/minijuegos" target="blank">juegos</a>
+
+    <br>
+
+    <!--Table-->
+    <table width="200" height="200" border="1">
+        <script>
+            for (let i = 0; i < 3; i++) {
+                document.write("<tr>");
+                for (let j = 0; j < 4; j++) {
+                    document.write("<td>");
+                }
+            }
+        </script>
+    </table>
+
+    <!--Listas-->
+    <ul>
+        <li>2</li>
+        <li>3</li>
+        <li>1</li>
+        <li>4</li>
+    </ul>
+
+    <ol>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ol>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>
+            <ol>
+                <li>2.1</li>
+                <li>2.2</li>
+            </ol>
+        </li>
+        <li>3</li>
+    </ul>
+
+    <!--Img-->
+    <img src="img1.jpg" alt="No hay foto :(" height="200">
+
+    <br>
+
+    <!--Meter-->
+    <meter id="meter1" value="0.5">50%</meter>
+
+    <br>
+
+    <!--Audio-->
+    <audio controls>
+        <source src="horse.mp3" type="audio/mpeg">
+    </audio> Audio
+
+    <br>
+
+    <!--Video-->
+    <video width="320" height="240" controls>
+        <source src="Bob esponja.mp4" type="video/mp4">
+    </video>
+
+    <br>
+    <!--Canvas-->
+    <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;"></canvas>
+
+    <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.moveTo(0, 0);
+        ctx.lineTo(200, 100);
+        ctx.stroke();
+    </script>
+
+    <br>
+    <!--contextMenu-->
+    <div contextmenu="mymenu">
+
+        <menu type="context" id="mymenu">
+            <menuitem label="1">1</menuitem>
+            <menuitem label="2">2</menuitem>
+        </menu>
+    </div>
+
+    <style>
+        ::placeholder {
+            color: blue;
+            font-size: 1.5em;
+            font-style: italic;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+    </style>
+    <!--Form-->
+    <form>
+        <fieldset>
+            <legend>Box 1</legend>
+            <input type="text" placeholder="Name" maxlength="60" size="50">
+            <br>
+            <input type="password" placeholder="Secret Word" minlength="6">
+            <br>
+            <div class="tooltip">
+                <textarea></textarea>
+                <span class="tooltiptext">Tooltip</span>
+            </div>
+            <br>
+            <input type="date" placeholder="Birthdate">
+            <br>
+            <input type="color" placeholder="Favourite color">
+            <br>
+            <input type="range" placeholder="Level">
+            <br>
+            <input type="number" placeholder="Age">
+            <br>
+            <input type="file" placeholder="Upload a file">
+        </fieldset>
+        <fieldset>
+            <legend>Box 2</legend>
+            <input type="url" placeholder="Web address">
+            <br>
+            <input type="email" placeholder="E-mail address">
+            <br>
+            <input type="telephone" placeholder="Telephone">
+            <br>
+            <input type="time" placeholder="Local time">
+            <br>
+            <input type="datetime-local" placeholder="Local date and time">
+            <br>
+            <input type="week" placeholder="Week and year">
+            <br>
+            <input type="month" placeholder="Month and year">
+            <br>
+            <input type="submit" placeholder="submitting button">
+            <br>
+            <input type="reset" placeholder="reset">
+        </fieldset>
+    </form>
+
+</html>
