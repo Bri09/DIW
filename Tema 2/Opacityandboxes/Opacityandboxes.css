@@ -1,0 +1,57 @@
+body {
+    text-align: center;
+}
+
+div {
+    padding-left: 35%;
+    padding-right: 35%;
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.first {
+    background-color: rgba(150, 150, 150, 0.2);
+    position: absolute;
+    right: -65%;
+    top: 20%;
+
+}
+
+.second {
+    background-color: rgba(150, 150, 150, 0.4);
+    position: absolute;
+    left: 0px;
+    top: 27%;
+}
+
+.third {
+    background-color: rgba(150, 150, 150, 0.7);
+    position: absolute;
+    left: -30%;
+    top: 34%;
+    padding-top: 25px;
+    padding-bottom: 0px;
+}
+
+div.fourth {
+    background-color: rgba(150, 150, 150, 1);
+    position: absolute;
+    right: 5px;
+    bottom: 50%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+div.fifth {
+    background-color: rgba(150, 150, 150, 0.7);
+    position: relative;
+    right: -100%;
+    top: -40px;
+    padding-left: 0%;
+    padding-right: 0%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border: orange solid;
+}
