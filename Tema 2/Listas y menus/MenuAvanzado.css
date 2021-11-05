@@ -1,14 +1,74 @@
-.mainmenu{
-    background-color: blue;
-    height: 50%;
-}
-.menu1 {
-    display: flex;
-    background-color: blue;
-    height: 10%;
+.mainmenu {
+    align-content: center;
 }
 
-.menu1btn {
+.menu1 {
+    display: flex;
+    background-color: rgb(5, 189, 235);
+    padding: 30px 55px 0px 55px;
+}
+
+.menu2 {
+    display: flex;
+    background-color: rgb(231, 229, 229);
+    padding: 30px 55px 0px 55px;
+}
+
+.menu3 {
+    display: flex;
+    background-color: rgb(183, 243, 183);
+    padding: 30px 55px 0px 55px;
+}
+
+.menu4 {
+    display: flex;
+    background-color: rgb(247, 214, 219);
+    padding: 30px 55px 0px 55px;
+}
+
+.menu5 {
+    display: flex;
+    background-color: black;
+    padding: 30px 55px 0px 55px;
+}
+
+button.menu1btn {
     flex: 1;
-    
+    height: 30px;
+    margin-right: 1px;
+}
+
+button.btn:hover {
+    height: 100%;
+}
+
+button.menu3btn {
+    flex: 1;
+    height: 30px;
+    background-color: rgb(6, 185, 6);
+    border: 0;
+    margin-right: 1px;
+}
+
+button.menu4btn {
+    flex: 1;
+    height: 30px;
+    background-color: pink;
+    border: 0;
+    color: magenta;
+    margin-right: 1px;
+}
+
+button.menu5btn {
+    flex: 1;
+    height: 30px;
+    background-color: red;
+    color: white;
+    border: 0;
+    margin-right: 1px;
+}
+
+span {
+    font-weight: bold;
+    font-size: large;
 }
