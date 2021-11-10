@@ -1,0 +1,29 @@
+div {
+    margin: .4em 0;
+}
+
+div label {
+    width: 25%;
+    float: left;
+}
+
+input:focus {
+    border: 1px solid rgb(0, 0, 0);
+    background: #cccccc;
+}
+.button{
+    margin-top: 10px;
+    background: radial-gradient(ellipse at top, rgb(200, 40, 40), rgb(200, 80, 80));
+    width: 150px;
+    height: 30px;
+    border: 1 double;
+    box-shadow: 4px 4px 8px grey;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+}
+.button:hover{
+    width: 200px;
+    height: 40px;
+    cursor: pointer;
+}
