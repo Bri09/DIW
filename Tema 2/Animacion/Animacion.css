@@ -1,0 +1,124 @@
+body {
+    background-color: rgb(80, 0, 80);
+}
+
+.movimiento1 {
+    height: 50px;
+    width: 50px;
+    background: url("flags.png") left;
+    animation: play1 1.5s steps(10) infinite
+}
+
+@keyframes play1 {
+    100% {
+        background-position: -2000px;
+    }
+}
+
+.movimiento2 {
+    height: 240px;
+    width: 190px;
+    background: url("foto.png");
+    animation: play2 2s steps(5) infinite
+}
+
+@keyframes play2 {
+    100% {
+        background-position-x: -1900px;
+    }
+}
+
+.movimiento3 {
+    height: 100px;
+    width: 100px;
+    background: url("explosion.png");
+    animation: play31 0.5s steps(6) infinite,
+        play32 3s steps(6) infinite
+}
+
+@keyframes play31 {
+    0% {
+        background-position-x: 0px;
+    }
+
+    100% {
+        background-position-x: -600px;
+    }
+}
+
+@keyframes play32 {
+    0% {
+        background-position-y: 0px;
+    }
+
+    100% {
+        background-position-y: -600px;
+    }
+}
+
+.movimiento4 {
+    height: 80px;
+    width: 80px;
+    background: url("Jason_Bourne.png");
+    animation: play41 0.5s steps(4) infinite,
+    play42 4s steps(1) infinite
+}
+
+@keyframes play41 {
+    0% {
+        background-position-x: 0px;
+    }
+
+    100% {
+        background-position-x: -640px;
+    }
+}
+
+@keyframes play42 {
+    0% {
+        background-position-y: 0px;
+    }
+
+    100% {
+        background-position-y: -470px;
+    }
+}
+
+.movimiento5 {
+    height: 00px;
+    width: 00px;
+    background: url("mickey-sprite.png");
+    animation: play5 1.5s steps(10) infinite
+}
+
+@keyframes play5 {
+    100% {
+        background-position: -2000px;
+    }
+}
+
+.movimiento6 {
+    height: 0px;
+    width: 0px;
+    background: url("money.jpg");
+    animation: play6 1.5s steps(10) infinite
+}
+
+@keyframes play6 {
+    100% {
+        background-position: -2000px;
+    }
+}
+
+.movimiento7 {
+    height: 0px;
+    width: 0px;
+    background: url("run.png");
+    animation: play7 1.5s steps(10) infinite
+}
+
+@keyframes play7 {
+    100% {
+        background-position: -2000px;
+    }
+}
