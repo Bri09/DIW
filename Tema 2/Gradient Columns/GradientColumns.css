@@ -5,6 +5,8 @@ body {
 
 p {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .box {
@@ -20,7 +22,7 @@ p {
 
 .rowBtn {
     margin-top: 10px;
-    background: rgb(0, 0, 120);
+    background: rgb(0, 0, 50);
     width: 100%;
     height: 150%;
     border: 0;
@@ -35,7 +37,7 @@ button::before {
 
 .rowBtn:hover {
     background-color: rgb(214, 214, 214);
-    color: black;
+    color: rgb(0, 0, 50);
 }
 
 .header {
@@ -45,13 +47,28 @@ button::before {
 }
 
 .headerBox {
-    background: radial-gradient(farthest-corner at 0px 0px, rgb(170, 194, 194),
-            rgb(148, 223, 250), rgb(18, 32, 233));
+    background: linear-gradient(-8deg, blue,
+            lightblue, grey);
     padding: 50px 10px 50px 10px;
     margin: -5px -10px -10px -10px;
     border-radius: 10%;
 }
-.image{
+
+.footerBox {
+    background: radial-gradient(at right 100%, blue,
+            lightblue, grey);
+    padding: 20px 10px 20px 10px;
+    margin: -5px -10px -10px -10px;
+    border-radius: 0% 30% 0% 30%;
+}
+
+.footer {
+    flex: 1;
+    text-align: left;
+    font-size: medium;
+}
+
+.image {
     float: left;
     margin-left: 5px;
     width: 60px;
