@@ -3,15 +3,31 @@ body {
 }
 
 .movimiento1 {
-    height: 50px;
-    width: 50px;
-    background: url("flags.png") left;
-    animation: play1 1.5s steps(10) infinite
+    width: 47px;
+    height: 54px;
+    background: url("flags.png");
+    animation:
+        play11 2s steps(16) infinite,
+        play12 30s steps(15) infinite;
 }
 
-@keyframes play1 {
+@keyframes play11 {
+    0% {
+        background-position-x: 0;
+    }
+
     100% {
-        background-position: -2000px;
+        background-position-x: -800px
+    }
+}
+
+@keyframes play12 {
+    0% {
+        background-position-y: 0;
+    }
+
+    100% {
+        background-position-y: -750px;
     }
 }
 
@@ -19,21 +35,26 @@ body {
     height: 240px;
     width: 190px;
     background: url("foto.png");
-    animation: play2 2s steps(5) infinite
+    animation: play2 0.3s steps(10) infinite
 }
 
 @keyframes play2 {
+    0% {
+        background-position: 0;
+    }
+
     100% {
-        background-position-x: -1900px;
+        background-position: -1900px;
     }
 }
 
 .movimiento3 {
-    height: 100px;
     width: 100px;
+    height: 100px;
     background: url("explosion.png");
-    animation: play31 0.5s steps(6) infinite,
-        play32 3s steps(6) infinite
+    animation:
+        play31 0.5s steps(6) infinite,
+        play32 3s steps(6) infinite;
 }
 
 @keyframes play31 {
@@ -48,7 +69,7 @@ body {
 
 @keyframes play32 {
     0% {
-        background-position-y: 0px;
+        background-position-y: 0;
     }
 
     100% {
@@ -57,26 +78,27 @@ body {
 }
 
 .movimiento4 {
-    height: 80px;
     width: 80px;
+    height: 95px;
     background: url("Jason_Bourne.png");
-    animation: play41 0.5s steps(4) infinite,
-    play42 4s steps(1) infinite
+    animation:
+        play41 1s steps(8) infinite,
+        play42 8s steps(5) infinite;
 }
 
 @keyframes play41 {
     0% {
-        background-position-x: 0px;
+        background-position-x: 0;
     }
 
     100% {
-        background-position-x: -640px;
+        background-position-x: -640px
     }
 }
 
 @keyframes play42 {
     0% {
-        background-position-y: 0px;
+        background-position-y: 0;
     }
 
     100% {
@@ -85,40 +107,76 @@ body {
 }
 
 .movimiento5 {
-    height: 00px;
-    width: 00px;
+    width: 256px;
+    height: 308px;
     background: url("mickey-sprite.png");
-    animation: play5 1.5s steps(10) infinite
+    animation:
+        play51 1s steps(8) infinite,
+        play52 5s steps(5) infinite;
 }
 
-@keyframes play5 {
+@keyframes play51 {
+    0% {
+        background-position-x: 0;
+    }
+
     100% {
-        background-position: -2000px;
+        background-position-x: -2048px
+    }
+}
+
+@keyframes play52 {
+    0% {
+        background-position-y: 0;
+    }
+
+    100% {
+        background-position-y: -1540px;
     }
 }
 
 .movimiento6 {
-    height: 0px;
-    width: 0px;
+    width: 1024px;
+    height: 200px;
     background: url("money.jpg");
-    animation: play6 1.5s steps(10) infinite
+    animation:
+        play61 1s steps(7) infinite,
+        play62 14s steps(5) infinite;
 }
 
-@keyframes play6 {
+@keyframes play61 {
+    0% {
+        background-position-x: 0;
+    }
+
     100% {
-        background-position: -2000px;
+        background-position-x: -1024px
+    }
+}
+
+@keyframes play62 {
+    0% {
+        background-position-y: 0;
+    }
+
+    100% {
+        background-position-y: -1024px;
     }
 }
 
 .movimiento7 {
-    height: 0px;
-    width: 0px;
+    width: 256px;
+    height: 256px;
     background: url("run.png");
-    animation: play7 1.5s steps(10) infinite
+    animation: play7 0.2s steps(6) infinite;
 }
 
 @keyframes play7 {
+    0% {
+        background-position: 0;
+    }
+
     100% {
-        background-position: -2000px;
+        background-position: -1536px;
     }
 }
