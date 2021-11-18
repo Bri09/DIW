@@ -1,0 +1,54 @@
+$greenRadialHeader: radial-gradient(ellipse at top, rgb(3, 153, 3), rgb(178, 253, 66));
+$greenRadialFooter: radial-gradient(rgb(2, 117, 2), rgb(178, 253, 66));
+
+.header {
+    background-color: greenyellow;
+    background: $greenRadialHeader;
+    font-size: small;
+    color: white;
+    padding: 10px 50px 50px 10px;
+}
+
+.footer {
+    background-color: greenyellow;
+    background: $greenRadialFooter;
+    font-size: small;
+    padding: 10px 50px 40px 10px;
+}
+
+.CopyLeft {
+    float: right;
+}
+
+.clearfix {
+    display: flex;
+}
+
+.menu>ul>li {
+    background-color: green;
+    font-size: medium;
+    width: 200px;
+    padding: 8px 8px 8px 8px;
+    margin-left: -40px;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.menu>ul>li>e {
+    color: gold;
+}
+
+.content {
+    margin-left: 50px;
+    width: 80%;
+    font-size: small;
+}
+
+.news {
+    margin-left: 50px;
+    font-size: small;
+    box-sizing: border-box;
+    border: 2px solid green;
+    margin: 10px;
+    padding: 2px;
+}

@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACA,OAAQ;EACJ,gBAAgB,EAFZ,WAAW;EAGf,UAAU,EAAE,iDAAkE;EAC9E,SAAS,EAAE,KAAK;EAChB,KAAK,EAAE,KAAK;EACZ,OAAO,EAAE,mBAAmB",
+"sources": ["SonfegradientSCSS.scss"],
+"names": [],
+"file": "SonfegradientCSS.css"
+}
