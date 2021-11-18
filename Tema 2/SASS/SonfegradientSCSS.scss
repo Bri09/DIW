@@ -28,7 +28,7 @@ $padding2: 8px 8px 8px 8px;
 }
 
 //Function
-@function widthLeftList($base, $multiplo){
+@function widthLeftList($base, $multiplo) {
     $result: $base * $multiplo;
     @return $result;
 }
@@ -39,13 +39,15 @@ $padding2: 8px 8px 8px 8px;
         color: gold;
     }
 }
+
 //Mixin2
 @mixin LeftList {
     .menu>ul>li {
         background-color: green;
         font-size: medium;
-        width: widthLeftList(40,5);
-//Media directive1
+        width: widthLeftList(40, 5);
+
+        //Media directive1
         @media screen and (min-width: 80px) {
 
             max-width: 200px;
@@ -76,7 +78,8 @@ div {
 .content {
     margin-left: 50px;
     width: 80%;
-//Media directive2
+
+    //Media directive2
     @media screen and (min-width: 50%) {
 
         max-width: 80%;
