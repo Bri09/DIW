@@ -5,4 +5,53 @@
   color: white;
   padding: 10px 50px 50px 10px; }
 
+.footer {
+  background-color: greenyellow;
+  background: radial-gradient(#027502, #b2fd42);
+  font-size: small;
+  padding: 10px 50px 40px 10px; }
+
+.CopyLeft {
+  float: right; }
+
+.clearfix {
+  display: flex; }
+
+div .menu > ul > li {
+  background-color: green;
+  font-size: medium;
+  width: 200;
+  padding: 8px 8px 8px 8px;
+  margin-left: -40px;
+  margin-bottom: 5px;
+  color: white; }
+  @media screen and (min-width: 80px) {
+    div .menu > ul > li {
+      max-width: 200px; } }
+  div .menu > ul > li ::before {
+    content: "'"; }
+  div .menu > ul > li ::after {
+    content: "'"; }
+  div .menu > ul > li > gold {
+    color: gold; }
+
+.content {
+  margin-left: 50px;
+  width: 80%;
+  font-size: small; }
+  @media screen and (min-width: 50%) {
+    .content {
+      max-width: 80%; } }
+
+.news {
+  margin-left: 50px;
+  font-size: small;
+  box-sizing: border-box;
+  border: 2px solid green;
+  margin: 10px;
+  padding: 2px; }
+  .news:hover {
+    cursor: help;
+    color: blue; }
+
 /*# sourceMappingURL=SonfegradientCSS.css.map */

@@ -1,12 +1,15 @@
+// 4 variables
 $greenRadialHeader: radial-gradient(ellipse at top, rgb(3, 153, 3), rgb(178, 253, 66));
 $greenRadialFooter: radial-gradient(rgb(2, 117, 2), rgb(178, 253, 66));
+$padding1: 10px 50px 50px 10px;
+$padding2: 8px 8px 8px 8px;
 
 .header {
     background-color: greenyellow;
     background: $greenRadialHeader;
     font-size: small;
     color: white;
-    padding: 10px 50px 50px 10px;
+    padding: $padding1;
 }
 
 .footer {
@@ -24,23 +27,61 @@ $greenRadialFooter: radial-gradient(rgb(2, 117, 2), rgb(178, 253, 66));
     display: flex;
 }
 
-.menu>ul>li {
-    background-color: green;
-    font-size: medium;
-    width: 200px;
-    padding: 8px 8px 8px 8px;
-    margin-left: -40px;
-    margin-bottom: 5px;
-    color: white;
+//Function
+@function widthLeftList($base, $multiplo){
+    $result: $base * $multiplo;
+    @return $result;
 }
 
-.menu>ul>li>e {
-    color: gold;
+//Mixin1
+@mixin goldColor {
+    >gold {
+        color: gold;
+    }
+}
+//Mixin2
+@mixin LeftList {
+    .menu>ul>li {
+        background-color: green;
+        font-size: medium;
+        width: widthLeftList(40,5);
+//Media directive1
+        @media screen and (min-width: 80px) {
+
+            max-width: 200px;
+        }
+
+        padding: $padding2;
+        margin-left: -40px;
+        margin-bottom: 5px;
+        color: white;
+
+        //Pseudo-elements
+        ::before {
+            content: "'";
+        }
+
+        ::after {
+            content: "'"
+        }
+
+        @include goldColor();
+    }
+}
+
+div {
+    @include LeftList();
 }
 
 .content {
     margin-left: 50px;
     width: 80%;
+//Media directive2
+    @media screen and (min-width: 50%) {
+
+        max-width: 80%;
+    }
+
     font-size: small;
 }
 
@@ -51,4 +92,10 @@ $greenRadialFooter: radial-gradient(rgb(2, 117, 2), rgb(178, 253, 66));
     border: 2px solid green;
     margin: 10px;
     padding: 2px;
+
+    //Pseudo-class
+    &:hover {
+        cursor: help;
+        color: rgb(0, 0, 255);
+    }
 }
