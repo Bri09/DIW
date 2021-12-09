@@ -11,25 +11,37 @@
 <body>
     <canvas id='myCanv' width="900" height="500" style="border: 2px solid black;"></canvas>
     <script>
-        const mywidth = "1000px";
-        const myheight = "500px";
-        var canvas = document.getElementById("myCanv");
-        var context = canvas.getContext("2d");
+        function canvasNike() {
+            const mywidth = "1000px";
+            const myheight = "500px";
+            var canvas = document.getElementById("myCanv");
+            var context = canvas.getContext("2d");
 
-        //we clear everything and save context
-        context.save();
+            //we clear everything and save context
+            context.save();
 
-        //mid point x,y, midpoing2 x,y , end point
-        //Start again
-        context.beginPath();
-        //start point
-        context.moveTo(150, 100);
-        //mid point x,y, midpoing2 x,y , end point
-        context.bezierCurveTo(30, 250, 100, 300, 500, 100);
-        context.bezierCurveTo(300, 150, 100, 250, 150, 100);
-        context.lineWidth = 2;
-        context.fill();
-        //context.stroke();
+            //mid point x,y, midpoing2 x,y , end point
+            //Start again
+            context.beginPath();
+            //start point
+            context.moveTo(150, 100);
+            //mid point x,y, midpoing2 x,y , end point
+            context.bezierCurveTo(30, 250, 100, 300, 500, 100);
+            context.bezierCurveTo(300, 150, 100, 250, 150, 100);
+            context.lineWidth = 2;
+            context.fill();
+            //context.stroke();
+        }
+        canvasNike();
+
+        /*function Moveswoosh(a, b) {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.beginPath();
+        }
+
+        window.requestAnimationFrame(() => {
+            Moveswoosh(1, 0);
+        });*/
     </script>
 </body>
 
