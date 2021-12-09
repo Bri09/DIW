@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+</head>
+
+<body>
+    <canvas id='myCanv' width="900" height="500" style="border: 2px solid black;"></canvas>
+    <script>
+        const mywidth = "1000px";
+        const myheight = "500px";
+        var canvas = document.getElementById("myCanv");
+        var context = canvas.getContext("2d");
+
+        function canvasNike() {
+            //we clear everything and save context
+            context.save();
+
+            //mid point x,y, midpoing2 x,y , end point
+            //Start again
+            context.beginPath();
+            //start point
+            context.moveTo(150, 100);
+            //mid point x,y, midpoing2 x,y , end point
+            context.bezierCurveTo(30, 250, 100, 300, 500, 100);
+            context.bezierCurveTo(300, 150, 100, 250, 150, 100);
+            context.lineWidth = 2;
+            context.fill();
+            //context.stroke();
+        }
+        //canvasNike();
+
+        let spx = 400,
+            spy = 200;
+        context.lineWidth = 10;
+        let backw = false;
+        let myr = false;
+
+        function Moveswoosh(a, b) {
+            // clean canvas
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.beginPath()
+            //debugger; if its inside bounds
+            if (spx >= canvas.width || spx <= 0 || spy >= canvas.height || spy <= 0) {
+                spx = 50;
+                spy = 100;
+            }
+            spx += a;
+            spy += b;
+
+            context.moveTo(spx, spy);
+            //context.strokeRect
+            context.bezierCurveTo(spx + 50, spy + 110, spx + 125, spy - 80, spx + 125, spy - 90);
+            //context.rotate(Math.PI * (i / 1000));
+            context.stroke();
+            //debugger;
+            window.requestAnimationFrame(() => {
+                Moveswoosh(a, b);
+            });
+        }
+        Moveswoosh(10, 10);
+    </script>
+</body>
+
+</html>
