@@ -36,9 +36,7 @@ var countdown = 30;
 var id = null;
 
 // Listen for keydown events
-canvas.addEventListener('keydown', keyDown);
-
-function keyDown(event) {
+document.addEventListener('keydown', function (event) {
     event.preventDefault();
     console.log(event.key, event.keyCode);
     if (event.keyCode === 40) { // DOWN
@@ -53,12 +51,10 @@ function keyDown(event) {
     if (event.keyCode === 39) { // RIGHT
         right = true;
     }
-}
+});
 
 // Listen for keyup events
-canvas.addEventListener('keyup', keyUp);
-
-function keyUp(event) {
+document.addEventListener('keyup', function (event) {
     event.preventDefault();
     console.log(event.key, event.keyCode);
     if (event.keyCode === 40) { // DOWN
@@ -73,7 +69,7 @@ function keyUp(event) {
     if (event.keyCode === 39) { // RIGHT
         right = false;
     }
-}
+});
 
 // Show the start menu
 function menu() {
@@ -188,4 +184,3 @@ function draw() {
 
 // Start the game
 menu();
-canvas.focus();
