@@ -109,7 +109,7 @@ function startGame() {
     draw();
 }
 
-// Show the end game screen
+// Muestra en pantalla el final del juego
 function endGame() {
     erase();
     context.fillStyle = '#000000';
@@ -120,16 +120,16 @@ function endGame() {
     context.fillText('Player ' + winner + ' wins!', canvas.width / 2, canvas.height / 2);
 }
 
-// Clear the canvas
+// Vacía el canvas
 function erase() {
     context.fillStyle = '#FFFFFF';
     context.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-// Main draw loop
+// Bucle para el movimiento
 function draw() {
     erase();
-    // Move the paddles
+    // Movimiento de los jugadores
     if (keys.W) {
         leftPaddle.y -= leftPaddle.s + 5;
     }
@@ -142,14 +142,14 @@ function draw() {
     if (keys.DOWN) {
         rightPaddle.y += rightPaddle.s + 5;
     }
-    // Move the ball
+    // Movimiento de la pelota
     ball.x += ball.sX;
     ball.y += ball.sY;
-    // Bounce the ball off the top/bottom
+    // Rebota la pelota en el techo y el suelo
     if (ball.y < 0 || ball.y + ball.h > canvas.height) {
         ball.sY *= -1;
     }
-    // Don't let the paddles go off screen
+    // Evita que el jugador no salga de la pantalla 
     [leftPaddle, rightPaddle].forEach(function (paddle) {
         if (paddle.y < 0) {
             paddle.y = 0;
@@ -158,7 +158,7 @@ function draw() {
             paddle.y = canvas.height - paddle.h;
         }
     });
-    // Bounce the ball off the paddles
+    // Rebote de la pelota en los jugadores
     if (ball.y + ball.h / 2 >= leftPaddle.y && ball.y + ball.h / 2 <= leftPaddle.y + leftPaddle.h) {
         if (ball.x <= leftPaddle.x + leftPaddle.w) {
             bounceBall();
@@ -169,7 +169,7 @@ function draw() {
             bounceBall();
         }
     }
-    // Score if the ball goes past a paddle
+    // Sistema de puntuación
     if (ball.x < leftPaddle.x) {
         rightScore++;
         resetBall();
@@ -179,24 +179,24 @@ function draw() {
         resetBall();
         ball.sX *= -1;
     }
-    // Draw the paddles and ball
+    // Dibuja los jugadores y la pelota
     leftPaddle.draw();
     rightPaddle.draw();
     ball.draw();
-    // Draw the scores
+    // Dibuja la puntuación
     context.fillStyle = '#000000';
     context.font = '24px Arial';
     context.textAlign = 'left';
     context.fillText('Score: ' + leftScore, 5, 24);
     context.textAlign = 'right';
     context.fillText('Score: ' + rightScore, canvas.width - 5, 24);
-    // End the game or keep going
-    if (leftScore === 10 || rightScore === 10) {
+    // Comprueba si la partida ha terminado, el que llegue a 8 gana
+    if (leftScore === 8 || rightScore === 8) {
         endGame();
     } else {
         window.requestAnimationFrame(draw);
     }
 }
 
-// Show the menu to start the game
+// Comienza el juego
 startGame();
