@@ -1,187 +1,202 @@
-// Collect The Square game
-
-// Get a reference to the canvas DOM element
 var canvas = document.getElementById('canvas');
-// Get the canvas drawing context
 var context = canvas.getContext('2d');
 
-// Properties for your square
-var x = 50; // X position
-var y = 400; // Y position
-var speed = 10; // Distance to move each frame
-var sideLength = 40; // Length of each side of the square
+// Codigo de cada tecla
+var W = 87;
+var S = 83;
+var UP = 38;
+var DOWN = 40;
 
-// FLags to track which keys are pressed
-var down = false;
-var up = false;
-var right = false;
-var left = false;
+// Variables para las teclas y sus eventos
+var keys = {
+    W: false,
+    S: false,
+    UP: false,
+    DOWN: false
+};
 
-// Properties for the target square
-var targetX = 0;
-var targetY = 0;
-var targetLength = 30;
-
-// Determine if number a is within the range b to c (exclusive)
-function isWithin(a, b, c) {
-    return (a > b && a < c);
+// Crea un objeto rectangular para cada objeto de la partida
+function createRect(x, y, width, height, speed, color) {
+    if (!color) color = '#000000';
+    return {
+        x: x,
+        y: y,
+        w: width,
+        h: height,
+        s: speed,
+        c: color,
+        draw: function () {
+            context.fillStyle = this.c;
+            context.fillRect(this.x, this.y, this.w, this.h);
+        }
+    };
 }
 
-// Countdown timer (in seconds)
-var countdown = 30;
-// ID to track the setTimeout
-var id = null;
+// Creamos a los jugadores(tablas)
+var paddleWidth = 20;
+var paddleHeight = 120;
+var leftPaddle = createRect(25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 10, '#BC0000');
+var rightPaddle = createRect(canvas.width - paddleWidth - 25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 10, '#0000BC');
 
-// Listen for keydown events
+// Variables para la puntuación
+var leftScore = 0;
+var rightScore = 0;
+
+// Creamos la pelota
+var ballLength = 20;
+var ballSpeed = 10;
+var ball = createRect(0, 0, ballLength, ballLength, ballSpeed, '#000000');
+
+// Añadimos una propiedad de velocidad por eje a la pelota
+ball.sX = ballSpeed;
+ball.sY = ballSpeed;
+
+// Devuelve la pelota a su posición inicial
+function resetBall() {
+    ball.x = canvas.width / 2 - ball.w / 2;
+    ball.y = canvas.height / 2 - ball.w / 2;
+    ball.sX = ballSpeed;
+    ball.sY = ballSpeed / 2;
+    leftPaddle = createRect(25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#BC0000');
+    rightPaddle = createRect(canvas.width - paddleWidth - 25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#0000BC');
+}
+
+// Permite el rebote de la pelota
+function bounceBall() {
+    // Envía la pelota en la dirección contraria
+    ball.sX *= -1;
+}
+
+/**  Añadimos un eventListener para las teclas de movimiento,
+ *   mientras estén presionadas se moveran*/
 document.addEventListener('keydown', function (event) {
-    event.preventDefault();
-    console.log(event.key, event.keyCode);
-    if (event.keyCode === 40) { // DOWN
-        down = true;
+    if (event.keyCode === W) {
+        keys.W = true;
     }
-    if (event.keyCode === 38) { // UP
-        up = true;
+    if (event.keyCode === S) {
+        keys.S = true;
     }
-    if (event.keyCode === 37) { // LEFT
-        left = true;
+    if (event.keyCode === UP) {
+        keys.UP = true;
     }
-    if (event.keyCode === 39) { // RIGHT
-        right = true;
+    if (event.keyCode === DOWN) {
+        keys.DOWN = true;
     }
 });
 
-// Listen for keyup events
+/** Añadimos un eventListener para las teclas de movimiento,
+ *  cuando no estén presionadas no se moveran */
 document.addEventListener('keyup', function (event) {
-    event.preventDefault();
-    console.log(event.key, event.keyCode);
-    if (event.keyCode === 40) { // DOWN
-        down = false;
+    if (event.keyCode === W) {
+        keys.W = false;
     }
-    if (event.keyCode === 38) { // UP
-        up = false;
+    if (event.keyCode === S) {
+        keys.S = false;
     }
-    if (event.keyCode === 37) { // LEFT
-        left = false;
+    if (event.keyCode === UP) {
+        keys.UP = false;
     }
-    if (event.keyCode === 39) { // RIGHT
-        right = false;
+    if (event.keyCode === DOWN) {
+        keys.DOWN = false;
     }
 });
 
-// Show the start menu
-function menu() {
-    erase();
-    context.fillStyle = '#000000';
-    context.font = '36px Arial';
-    context.textAlign = 'center';
-    context.fillText('Flappy square', canvas.width / 2, canvas.height / 4);
-    context.font = '24px Arial';
-    context.fillText('Click to Start', canvas.width / 2, canvas.height / 2);
-    context.font = '18px Arial'
-    context.fillText('Use the arrow keys to move', canvas.width / 2, (canvas.height / 4) * 3);
-    // Start the game on a click
-    canvas.addEventListener('click', startGame);
-}
-
-// Start the game
+// Comenzamos la partida
 function startGame() {
-    // Reduce the countdown timer ever second
-    id = setInterval(function () {
-        countdown--;
-    }, 1000)
-    // Stop listening for click events
-    canvas.removeEventListener('click', startGame);
-    // Put the target at a random starting point
-    moveTarget();
-    // Kick off the draw loop
+    // Colocamos la pelota en su sitio
+    resetBall();
+    // Comienza el bucle del juego y su movimiento
     draw();
 }
 
-// Show the game over screen
+// Show the end game screen
 function endGame() {
-    // Stop the countdown
-    clearInterval(id);
-    // Display the final result
     erase();
     context.fillStyle = '#000000';
     context.font = '24px Arial';
     context.textAlign = 'center';
-    context.fillText('You win', canvas.width / 2, canvas.height / 2);
-}
-
-// Move the target square to a random position
-function moveTarget() {
-    targetX = Math.round(Math.random() * canvas.width - targetLength);
-    targetY = Math.round(Math.random() * canvas.height - targetLength)
+    var winner = 1;
+    if (rightScore === 10) winner = 2;
+    context.fillText('Player ' + winner + ' wins!', canvas.width / 2, canvas.height / 2);
 }
 
 // Clear the canvas
 function erase() {
     context.fillStyle = '#FFFFFF';
-    context.fillRect(0, 0, 1000, 500);
+    context.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-// The main draw loop
+// Main draw loop
 function draw() {
     erase();
-    // Move the square
-    if (down) {
-        y += speed;
+    // Move the paddles
+    if (keys.W) {
+        leftPaddle.y -= leftPaddle.s + 5;
     }
-    if (up) {
-        y -= speed;
+    if (keys.S) {
+        leftPaddle.y += leftPaddle.s + 5;
     }
-    if (right) {
-        x += speed;
+    if (keys.UP) {
+        rightPaddle.y -= rightPaddle.s + 5;
     }
-    if (left) {
-        x -= speed;
+    if (keys.DOWN) {
+        rightPaddle.y += rightPaddle.s + 5;
     }
-    // Keep the square within the bounds
-    if (y + sideLength > canvas.height) {
-        y = canvas.height - sideLength;
+    // Move the ball
+    ball.x += ball.sX;
+    ball.y += ball.sY;
+    // Bounce the ball off the top/bottom
+    if (ball.y < 0 || ball.y + ball.h > canvas.height) {
+        ball.sY *= -1;
     }
-    if (y < 0) {
-        y = 0;
-    }
-    if (x < 0) {
-        x = 0;
-    }
-    if (x + sideLength > canvas.width) {
-        x = canvas.width - sideLength;
-    }
-    // Collide with the target
-    if (isWithin(targetX, x, x + sideLength) || isWithin(targetX + targetLength, x, x + sideLength)) { // X
-        if (isWithin(targetY, y, y + sideLength) || isWithin(targetY + targetLength, y, y + sideLength)) { // Y
-            // Respawn the target
-            moveTarget();
-            /*clearInterval(id);
-            // Display the final result
-            erase();
-            context.fillStyle = '#000000';
-            context.font = '24px Arial';
-            context.textAlign = 'center';
-            context.fillText('Game Over', canvas.width / 2, canvas.height / 2);*/
+    // Don't let the paddles go off screen
+    [leftPaddle, rightPaddle].forEach(function (paddle) {
+        if (paddle.y < 0) {
+            paddle.y = 0;
+        }
+        if (paddle.y + paddle.h > canvas.height) {
+            paddle.y = canvas.height - paddle.h;
+        }
+    });
+    // Bounce the ball off the paddles
+    if (ball.y + ball.h / 2 >= leftPaddle.y && ball.y + ball.h / 2 <= leftPaddle.y + leftPaddle.h) {
+        if (ball.x <= leftPaddle.x + leftPaddle.w) {
+            bounceBall();
         }
     }
-    // Draw the square
-    context.fillStyle = '#FF0000';
-    context.fillRect(x, y, sideLength, sideLength);
-    // Draw the target 
-    context.fillStyle = '#00FF00';
-    context.fillRect(targetX, targetY, targetLength, targetLength);
-    // Draw the time remaining
+    if (ball.y + ball.h / 2 >= rightPaddle.y && ball.y + ball.h / 2 <= rightPaddle.y + rightPaddle.h) {
+        if (ball.x + ball.w >= rightPaddle.x) {
+            bounceBall();
+        }
+    }
+    // Score if the ball goes past a paddle
+    if (ball.x < leftPaddle.x) {
+        rightScore++;
+        resetBall();
+        ball.sX *= -1;
+    } else if (ball.x + ball.w > rightPaddle.x + rightPaddle.w) {
+        leftScore++;
+        resetBall();
+        ball.sX *= -1;
+    }
+    // Draw the paddles and ball
+    leftPaddle.draw();
+    rightPaddle.draw();
+    ball.draw();
+    // Draw the scores
     context.fillStyle = '#000000';
     context.font = '24px Arial';
     context.textAlign = 'left';
-    context.fillText('Time Remaining: ' + countdown, 10, 50);
-    // End the game or keep playing
-    if (countdown <= 0) {
+    context.fillText('Score: ' + leftScore, 5, 24);
+    context.textAlign = 'right';
+    context.fillText('Score: ' + rightScore, canvas.width - 5, 24);
+    // End the game or keep going
+    if (leftScore === 10 || rightScore === 10) {
         endGame();
     } else {
         window.requestAnimationFrame(draw);
     }
 }
 
-// Start the game
-menu();
+// Show the menu to start the game
+startGame();
