@@ -1,0 +1,44 @@
+.color-azul {
+    color: #2a9fea;
+}
+
+.navbar-default {
+    background-color: #ffffff;
+}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    background-color: #ffffff;
+    color: #2a9fea;
+}
+
+.navbar-default li {
+    padding-right: 50px;
+}
+
+hr {
+    width: 50px;
+    border: 1px solid #2a9fea;
+    margin-top: 4px;
+}
+
+.circle {
+    background-color: #2a9fea;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    padding-top: 10px;
+}
+
+.fa {
+    color: white;
+}
+
+.block-border {
+    background-color: #fff;
+    border-color: #ddd;
+    border-width: 4px;
+    border-radius: 4px 4px 0 0;
+
+}
